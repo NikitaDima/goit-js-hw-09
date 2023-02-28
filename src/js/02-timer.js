@@ -5,6 +5,11 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const buttonStart = document.querySelector('button[data-start]');
 const dataInput = document.querySelector('#datetime-picker');
+const dayEl = document.querySelector('[data-days]');
+const hoursEl = document.querySelector('[data-hours]');
+const minutesEl = document.querySelector('[data-minutes]');
+const secondsEl = document.querySelector('[data-seconds]');
+
 flatpickr(dataInput, {});
 
 function convertMs(ms) {
