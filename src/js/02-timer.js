@@ -9,17 +9,36 @@ const dayEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
+buttonStart.setAttribute('disabled', true);
+let timerId = null;
+let userTime = null;
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    userTime = selectedDates[0].getTime();
+    // console.log(userTime);
   },
 };
 
 flatpickr(dataInput, options);
+// console.log(userTime);
+
+const timer = {
+  start() {
+    // const inputDate = new Date(dataInput.value).getTime();
+    timerId = setInterval(() => {
+      const currentTime = Date.now();
+      const deltaTime = currentTime - userTime;
+      const timerComponents = convertMs(deltaTime);
+      console.log(timerComponents);
+    }, 1000);
+  },
+};
+
+timer.start();
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
