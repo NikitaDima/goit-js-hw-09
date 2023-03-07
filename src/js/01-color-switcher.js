@@ -5,18 +5,16 @@ function getRandomHexColor() {
 const buttonStart = document.querySelector('button[data-start]');
 const buttonStop = document.querySelector('button[data-stop]');
 let timerId = null;
-let isActiv = false;
 buttonStart.addEventListener('click', () => {
-  if (isActiv) {
+  if (timerId === 1) {
     return;
   }
   timerId = setInterval(() => {
-    isActiv = true;
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 });
 
 buttonStop.addEventListener('click', () => {
   clearInterval(timerId);
-  isActiv = false;
+  timerId = null;
 });
